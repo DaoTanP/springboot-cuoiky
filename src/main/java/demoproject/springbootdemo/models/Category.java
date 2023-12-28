@@ -16,7 +16,7 @@ public class Category {
     private String id;
 
     @Column(name = "TenTheLoai", nullable = false)
-    private String categoryName;
+    private String name;
 
     @OneToMany(mappedBy = "category")
     private Set<Book> books;
@@ -29,12 +29,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

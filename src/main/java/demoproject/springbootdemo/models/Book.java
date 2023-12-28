@@ -64,7 +64,7 @@ public class Book {
     }
 
     public String getCategory() {
-        return category.getCategoryName();
+        return category.getName();
     }
 
     public void setCategory(Category category) {
@@ -72,7 +72,7 @@ public class Book {
     }
 
     public String getAuthor() {
-        return author.getAuthorName();
+        return author.getName();
     }
 
     public void setAuthor(Author author) {
@@ -80,7 +80,7 @@ public class Book {
     }
 
     public String getPublisher() {
-        return publisher.getPublisherName();
+        return publisher.getName();
     }
 
     public void setPublisher(Publisher publisher) {

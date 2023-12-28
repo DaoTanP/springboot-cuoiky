@@ -1,5 +1,6 @@
 package demoproject.springbootdemo.models;
 
+import java.sql.Date;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -9,17 +10,23 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TacGia")
-public class Author {
+@Table(name = "ThongTinMuonSach")
+public class BorrowInfo {
     @Id
     @Column(name = "Id")
     private String id;
 
-    @Column(name = "Ten", nullable = false)
-    private String name;
+    @Column(name = "SoThe", nullable = false)
+    private String cardNumber;
 
-    @OneToMany(mappedBy = "author")
-    private Set<Book> books;
+    @Column(name = "SachId", nullable = false)
+    private String bookId;
+
+    @Column(name = "NgayMuon", nullable = false)
+    private Date borrowDate;
+
+    @Column(name = "NgayTra", nullable = false)
+    private Date returnDate;
 
     public String getId() {
         return id;
@@ -29,11 +36,4 @@ public class Author {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

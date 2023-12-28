@@ -58,8 +58,16 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Optional<User> getUser(@PathVariable("id") String id) {
-        return userRepository.findById(id);
+    public @ResponseBody User getUser(@PathVariable("id") String id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isPresent()) {
+            User u = user.get();
+            u.setPassword("");
+            return u;
+        }
+
+        return null;
     }
 
     @DeleteMapping(path = "/delete")

@@ -16,7 +16,7 @@ public class Publisher {
     private String id;
 
     @Column(name = "TenNhaXuatBan", nullable = false)
-    private String publisherName;
+    private String name;
 
     @OneToMany(mappedBy = "publisher")
     private Set<Book> books;
@@ -29,11 +29,11 @@ public class Publisher {
         this.id = id;
     }
 
-    public String getPublisherName() {
-        return publisherName;
+    public String getName() {
+        return name;
     }
 
-    public void setPublisherName(String publisherName) {
-        this.publisherName = publisherName;
+    public void setName(String name) {
+        this.name = name;
     }
 }
