@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,8 +45,8 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PutMapping(path = "")
-    public ResponseEntity<String> updateUser(@ModelAttribute User userToUpdate) {
+    @PatchMapping(path = "")
+    public ResponseEntity<String> updateUser(@RequestBody User userToUpdate) {
         User user = userRepository.findByUsername(userToUpdate.getUsername());
 
         if (user != null) {
@@ -103,7 +104,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/libraryCard")
-    public @ResponseBody ResponseEntity<String> linkLibraryCard(@RequestBody UserLibraryCardModel u) {
+    public @ResponseBody LibraryCard linkLibraryCard(@RequestBody UserLibraryCardModel u) {
         User user = userRepository.findByUsername(u.getUsername());
 
         if (user != null) {
@@ -113,10 +114,10 @@ public class UserController {
                 user.setLibraryCard(card.get());
             }
             userRepository.save(user);
-            return ResponseEntity.ok("Card number updated for user " + user.getUsername());
+            return card.get();
         }
 
-        return ResponseEntity.status(404).body("Could not find user " + u.getUsername());
+        return null;
     }
 
     @PostMapping(path = "/usernameExists")

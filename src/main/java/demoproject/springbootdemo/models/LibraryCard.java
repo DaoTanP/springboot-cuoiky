@@ -1,10 +1,12 @@
 package demoproject.springbootdemo.models;
 
 import java.sql.Date;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -26,6 +28,9 @@ public class LibraryCard {
 
     @OneToOne(mappedBy = "libraryCard")
     private User user;
+
+    @OneToMany(mappedBy = "card")
+    private Set<BorrowInfo> borrowInfos;
 
     public String getId() {
         return id;

@@ -45,7 +45,7 @@ public class User {
     private String phoneNumber;
 
     @Column(name = "AnhDaiDien")
-    private String avatar;
+    private String avatarImage;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SoThe", referencedColumnName = "SoThe")
@@ -77,7 +77,7 @@ public class User {
             phoneNumber = user.getPhoneNumber();
 
         if (user.getAvatar() != null)
-            avatar = user.getAvatar();
+            avatarImage = user.getAvatar();
 
         if (user.getLibraryCard() != null)
             libraryCard = user.getLibraryCard();
@@ -170,11 +170,11 @@ public class User {
     }
 
     public String getAvatar() {
-        return avatar;
+        return avatarImage;
     }
 
     public void setAvatar(String avatar) {
-        this.avatar = avatar;
+        this.avatarImage = avatar;
     }
 
     public void setLibraryCard(LibraryCard card) {
